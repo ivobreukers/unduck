@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Voax</ShortName>
+  <Description>DuckDuckGo's bang redirects are too slow.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <LongName>Voax Bangs</LongName>
+  <Url type="text/html" method="get" template="https://s.voax.nl?q={searchTerms}"/>
+</OpenSearchDescription>

@@ -3,6 +3,15 @@
 export const bangs = [
   {
     c: "AI",
+    d: "grok.com",
+    r: 0,
+    s: "Grok",
+    sc: "AI",
+    t: "grok",
+    u: "https://grok.com/?q={{{s}}}",
+  },
+  {
+    c: "AI",
     d: "www.t3.chat",
     r: 0,
     s: "T3 Chat",
@@ -122061,5 +122070,42 @@ export const bangs = [
     sc: "Online",
     t: "\u10d0\u10e1\u10e2\u10e0\u10dd",
     u: "http://astronet.ge/?s={{{s}}}",
+  },
+
+  {
+    c: "AI",
+    d: "chat.openai.com",
+    r: 0,
+    s: "ChatGPT",
+    sc: "AI",
+    t: "cgpt",
+    u: "https://chat.openai.com?q={{{s}}}",
+  },
+  {
+    c: "AI",
+    d: "chat.openai.com",
+    r: 0,
+    s: "ChatGPT 4o",
+    sc: "AI",
+    t: "cgpt-4o",
+    u: "https://chat.openai.com?model=4o&q={{{s}}}",
+  },
+  {
+    c: "AI",
+    d: "chat.openai.com",
+    r: 0,
+    s: "ChatGPT o3-mini-high",
+    sc: "AI",
+    t: "cgpt-o3-mini-high",
+    u: "https://chat.openai.com?model=o3-mini-high&q={{{s}}}",
+  },
+  {
+    c: "AI",
+    d: "chat.openai.com",
+    r: 0,
+    s: "ChatGPT o1",
+    sc: "AI",
+    t: "cgpt-o1",
+    u: "https://chat.openai.com?model=o1&q={{{s}}}",
   },
 ];

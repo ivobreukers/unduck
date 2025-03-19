@@ -6,14 +6,14 @@ function noSearchDefaultPageRender() {
   app.innerHTML = `
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
       <div class="content-container">
-        <h1>Und*ck</h1>
+        <h1>Voax Bangs</h1>
         <p>DuckDuckGo's bang redirects are too slow. Add the following URL as a custom search engine to your browser. Enables <a href="https://duckduckgo.com/bang.html" target="_blank">all of DuckDuckGo's bangs.</a></p>
-        <div class="url-container"> 
-          <input 
-            type="text" 
+        <div class="url-container">
+          <input
+            type="text"
             class="url-input"
-            value="https://unduck.link?q=%s"
-            readonly 
+            value="https://s.voax.nl?q=%s"
+            readonly
           />
           <button class="copy-button">
             <img src="/clipboard.svg" alt="Copy" />
@@ -21,11 +21,13 @@ function noSearchDefaultPageRender() {
         </div>
       </div>
       <footer class="footer">
-        <a href="https://t3.chat" target="_blank">t3.chat</a>
+        <a href="https://github.com/ivobreukers/unduck" target="_blank"
+          >Current Fork Repo</a
+        >
         •
-        <a href="https://x.com/theo" target="_blank">theo</a>
-        •
-        <a href="https://github.com/t3dotgg/unduck" target="_blank">github</a>
+        <a href="https://github.com/t3dotgg/unduck/" target="_blank"
+          >Original Repo</a
+        >
       </footer>
     </div>
   `;
@@ -55,20 +57,21 @@ function getBangredirectUrl() {
     return null;
   }
 
-  const match = query.match(/!(\S+)/i);
-
-  const bangCandidate = match?.[1]?.toLowerCase();
+  const prefixMatch = query.match(/!(\S+)/i);
+  const suffixMatch = query.match(/(\S+)!/);
+  const bangCandidate = (prefixMatch?.[1] ?? suffixMatch?.[1])?.toLowerCase();
   const selectedBang = bangs.find((b) => b.t === bangCandidate) ?? defaultBang;
 
-  // Remove the first bang from the query
-  const cleanQuery = query.replace(/!\S+\s*/i, "").trim();
+  if (query === selectedBang?.t) return selectedBang.d;
 
-  // Format of the url is:
-  // https://www.google.com/search?q={{{s}}}
+  const cleanQuery = query
+    .replace(/!\S+\s*/i, "")
+    .replace(/\s*\S+!/, "")
+    .trim();
+
   const searchUrl = selectedBang?.u.replace(
     "{{{s}}}",
-    // Replace %2F with / to fix formats like "!ghr+t3dotgg/unduck"
-    encodeURIComponent(cleanQuery).replace(/%2F/g, "/")
+    encodeURIComponent(cleanQuery).replace(/%2F/g, "/"),
   );
   if (!searchUrl) return null;
 
